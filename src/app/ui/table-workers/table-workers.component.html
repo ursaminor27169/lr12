@@ -5,34 +5,39 @@
     <table class="table">
         <thead>
             <th scope="col" [style.width]="'100px'">id</th>
-            <th scope="col" [style.width]="'35%'">Имя</th>
+            <th scope="col" [style.width]="'20%'">Имя</th>
             <th scope="col">Фамилия</th>
-            <th scope="col" [style.width]="'150px'"></th>
-            <th scope="col" [style.width]="'150px'"></th>
+            <th scope="col" [style.width]="'20%'">Телефон</th>
+            <th scope="col" [style.width]="'100px'"></th>
+            <th scope="col" [style.width]="'100px'"></th>
         </thead>
         <tbody>
             <tr *ngFor="let worker of workers">
                 <th scope="row">{{worker.id}}</th>
                 <td>{{worker.name}}</td>
                 <td>{{worker.surname}}</td>
+                <td>{{worker.phone}}</td>
                 <td><button (click)="onChangeWorker(worker.id)" class="btn btn-outline-success btn-sm">Изменить</button></td>
                 <td><button (click)="onDeleteWorker(worker.id)" class="btn btn-outline-danger btn-sm">Удалить</button></td>
             </tr>
         </tbody>
     </table>
 </div>
-<div class="row mb-3" *ngIf="changingWorkerId > -1">
+<form action="" class="row mb-3" [formGroup]="changeForm" *ngIf="changingWorkerId > -1">
     <div class="col-12">
         <h6>Введите измененные данные сотрудника</h6>
     </div>
     <div class="col-3">
-        <input type="text" class="form-control" placeholder="{{this.changingWorker.name}}" [(ngModel)]="name">
+        <input type="text" class="form-control" placeholder="Имя" formControlName="name">
     </div>
     <div class="col-3">
-        <input type="text" class="form-control" placeholder="{{this.changingWorker.surname}}" [(ngModel)]="surname">
+        <input type="text" class="form-control" placeholder="Фамилия" formControlName="surname">
     </div>
     <div class="col-3">
-        <select class="custom-select" [(ngModel)]="type">
+        <input [textMask]="{mask: mask}" type="text" class="form-control" placeholder="Телефон" formControlName="phone">
+    </div>
+    <div class="col-3">
+        <select class="custom-select" formControlName="type">
             <option [ngValue]="MyWorkerType.programmer">Программист</option>
             <option [ngValue]="MyWorkerType.designer">Дизайнер</option>
             <option [ngValue]="MyWorkerType.copywriter">Копирайтер</option>
@@ -40,9 +45,9 @@
         </select>
     </div>
     <div class="col-1">
-        <button class="btn btn-success btn-sm" (click)="onSaveWorker()">Сохранить</button>
+        <button type="button" class="btn btn-success btn-sm" (click)="onSaveWorker()" [disabled]="changeForm.invalid">Сохранить</button>
     </div>
     <div class="col-1">
-        <button class="btn btn-danger btn-sm" (click)="onClose()">Закрыть</button>
+        <button type="button" class="btn btn-danger btn-sm" (click)="onClose()">Закрыть</button>
     </div>
-</div>
+</form>
