@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MyWorker, MyWorkerType } from 'src/app/shared/worker.models';
-// import { TextMaskModule } from 'angular2-text-mask';
 
 @Component({
   selector: 'app-table-workers',
