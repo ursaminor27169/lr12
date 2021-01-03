@@ -7,12 +7,14 @@ import { AddformWorkerComponent } from './ui/addform-worker/addform-worker.compo
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { HttpClientModule } from '@angular/common/http';
+import { MufilterPipe } from './shared/pipes/mufilter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableWorkersComponent,
-    AddformWorkerComponent
+    AddformWorkerComponent,
+    MufilterPipe
   ],
   imports: [
     BrowserModule,

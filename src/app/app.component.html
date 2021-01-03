@@ -6,30 +6,34 @@
   </div>
   <app-addform-worker
   (addWorker)="onAddWorker($event)"></app-addform-worker>
+  <div class="row my-3">
+    <h5 class="col-6">Поиск сотрудника по имени и фамилии</h5>
+    <input type="text" class="col-6 form-control" [(ngModel)]="myStr">
+  </div>
   <app-table-workers 
     [title]="'Программисты'" 
-    [workers]="getByType(MyWorkerType.programmer)"
+    [workers]="getByType(MyWorkerType.programmer) | mufilter:myStr"
     (deleteWorker)="onDeleteWorker($event)"
     (saveWorker)="onSaveWorker($event)"
   ></app-table-workers>
 
   <app-table-workers 
     [title]="'Дизайнеры'" 
-    [workers]="getByType(MyWorkerType.designer)"
+    [workers]="getByType(MyWorkerType.designer) | mufilter:myStr"
     (deleteWorker)="onDeleteWorker($event)"
     (saveWorker)="onSaveWorker($event)"
   ></app-table-workers>
 
   <app-table-workers 
     [title]="'Копирайтеры'" 
-    [workers]="getByType(MyWorkerType.copywriter)"
+    [workers]="getByType(MyWorkerType.copywriter) | mufilter:myStr"
     (deleteWorker)="onDeleteWorker($event)"
     (saveWorker)="onSaveWorker($event)"
   ></app-table-workers>
 
   <app-table-workers 
     [title]="'Менеджеры'" 
-    [workers]="getByType(MyWorkerType.manager)"
+    [workers]="getByType(MyWorkerType.manager) | mufilter:myStr"
     (deleteWorker)="onDeleteWorker($event)"
     (saveWorker)="onSaveWorker($event)"
   ></app-table-workers>

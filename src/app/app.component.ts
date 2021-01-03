@@ -11,6 +11,7 @@ export class AppComponent {
   title = 'Список сотрудников';
   workers: MyWorker[] = MyWorkersDatabase;
   MyWorkerType = MyWorkerType;
+  myStr: string;
 
   constructor(private HttpWorkerService: HttpWorkerService) {}
 
